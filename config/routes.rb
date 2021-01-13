@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sessions/home'
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  root 'sessions#home'
+
   resources :playlist_songs
   resources :songs
   resources :genres
