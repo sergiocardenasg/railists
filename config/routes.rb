@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
   root 'sessions#home'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
   resources :playlist_songs
   resources :songs

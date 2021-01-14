@@ -93,7 +93,7 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -135,11 +135,12 @@ GEM
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-facebook (8.0.0)
-      omniauth-oauth2 (~> 1.2)
-    omniauth-oauth2 (1.7.0)
+    omniauth-github (1.4.0)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
+    omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
-      omniauth (~> 1.9)
+      omniauth (>= 1.9, < 3)
     public_suffix (4.0.6)
     puma (4.3.7)
       nio4r (~> 2.0)
@@ -253,7 +254,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   omniauth
-  omniauth-facebook
+  omniauth-github
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   sass-rails (>= 6)
