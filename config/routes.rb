@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/home'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'

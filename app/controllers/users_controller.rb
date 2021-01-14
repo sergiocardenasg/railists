@@ -1,3 +1,9 @@
 class UsersController < ApplicationController
-    has_many :playlists
+    def new
+        
+    end
+
+    def create
+        
+    end
 end
