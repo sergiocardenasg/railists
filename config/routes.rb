@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  get '/logout' => 'sessions#destroy'
+  post '/logout' => 'sessions#destroy'
   root 'sessions#home'
 
   resources :playlist_songs
