@@ -21,13 +21,13 @@
           </button> %>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <%if session[:user_id] %>
-          <a class="navbar-brand" href="/users/<%=current_user.id%>"/><%=current_user.username%>'s Playlists</a>
+          <a class="navbar-brand" href="/users/<%=current_user.id%>"/><%=current_user.username%>'s profile</a>
           <%# <a class="navbar-brand" href="/logout"/>Log Out</a> %>
           <%= link_to "Log Out", logout_path, class:"navbar-brand"%>
         <%else%>
           <a class="navbar-brand" href="/signup"/>Sign Up</a>
           <a class="navbar-brand" href="/signin"/>Sign In</a>
-          <%= link_to 'Signing in with GitHub', '/auth/github', class:"navbar-brand"%>
+          <%= link_to 'Signing in with GitHub', :github_auth, class:"navbar-brand"%>
         <%end%>
         </div>
         <div class="navbar-collapse collapse">

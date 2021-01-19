@@ -1,1 +1,14 @@
-<h1> test </h1>
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
+
+<div class="center">
+  <div class="info">
+    <p><strong>Username:</strong> <%= @user.username %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Playlist Count:</strong>  <%= @user.playlists.count %></p>
+    <p><%= link_to 'See playlists', playlists_path %></p>
+  </div>
+</div>

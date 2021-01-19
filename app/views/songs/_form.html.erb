@@ -1,0 +1,35 @@
+<%= form_for @song, url: "/songs/#{@song.id}", method: "post" do |f| %>
+
+    <div class="form-group">
+        <%= f.label :title %>
+        <br>
+        <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Select from existing artists" %>
+        <br>
+        <%= f.collection_select :artist, Artist.all, :id, :name %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Create new artist" %>
+        <br>
+        <%= f.text_field :artist, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Select from existing genre" %>
+        <br>
+        <%= f.collection_select :genre, Genre.all, :id, :name %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Create new genre" %>
+        <br>
+        <%= f.text_field :genre, class: "form-control" %>
+    </div>
+
+    <%= f.submit class: "btn btn-primary" %>
+
+<% end %>

@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
   root 'sessions#home'
-  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/auth/developer', :as => 'developer_auth'
+  get '/auth/github', :as => 'github_auth'
+  match '/auth/:provider/callback', to: 'sessions#github', via: [:get, :post]
 
   resources :playlist_songs
   resources :songs
-  resources :genres
-  resources :artists
+  resources :genres do
+    resources :songs, only: [:show, :index]
+  end
+  resources :artists do
+    resources :songs, only: [:show, :index]
+  end
   resources :playlists
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
