@@ -1,12 +1,26 @@
 <%= form_for @song, url: "/songs/#{@song.id}", method: "post" do |f| %>
 
+    <% if @song.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@song.errors.count, "error") %> encountered:
+            </h2>
+
+            <ol>
+            <% @song.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ol>
+        </div>
+    <% end %>
+
     <div class="form-group">
         <%= f.label :title %>
         <br>
         <%= f.text_field :title, class: "form-control" %>
     </div>
 
-    <div class="form-group <%= ' field_with_errors' if @song.errors[:artist_name].any? %>">
+    <div class="form-group <%= 'field_with_errors' if @song.errors[:artist_name].any? %>">
         <%= f.label :artist_name %><br>
         <%= f.text_field :artist_name, list: "artist_autocomplete" %>
         <datalist id="artist_autocomplete">
@@ -16,7 +30,7 @@
         </datalist>
     </div>
 
-    <div class="form-group <%= ' field_with_errors' if @song.errors[:genre_name].any? %>">
+    <div class="form-group <%= 'field_with_errors' if @song.errors[:genre_name].any? %>">
         <%= f.label :genre_name %><br>
         <%= f.text_field :genre_name, list: "genre_autocomplete" %>
         <datalist id="genre_autocomplete">
