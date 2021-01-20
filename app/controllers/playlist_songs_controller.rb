@@ -8,9 +8,9 @@ class PlaylistSongsController < ApplicationController
     end
 
     def create
-        @playlist_song = PlaylistSong.new(playlist_song_params)
+        @playlist_song = PlaylistSong.new(playlistsong_params)
         if @playlist_song.save
-            redirect_to root_path
+            redirect_to playlists_path
         else
             render :new
         end
@@ -18,7 +18,7 @@ class PlaylistSongsController < ApplicationController
 
     private
 
-    def playlist_song_params
-        params.require(:playlist_song).permit(:song_title, :playlist_name)
+    def playlistsong_params
+        params.require(:playlist_song).permit(:playlist_name, :song_title)
     end
 end
