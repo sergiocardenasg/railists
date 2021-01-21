@@ -1,0 +1,23 @@
+<h1>Songs in Playlists</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><strong>Playlist Name</strong></td>
+    <td><strong>Songs</strong></td>
+    <td><strong>Artists</strong></td>
+  </tr>
+  <% @playlist_songs.each do |playlist_song| %>
+    <tr>
+        <td><%= link_to playlist_song.playlist.name, playlist_path(playlist_song.playlist) %></td>
+        <td><%= link_to playlist_song.song.title, song_path(playlist_song.song) %></td>
+        <td><%= link_to playlist_song.song.artist.name, artist_path(playlist_song.song.artist) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<p><%= link_to "Back to Playlists", playlists_path %></p>

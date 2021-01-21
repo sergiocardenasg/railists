@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="form-group <%= 'field_with_errors' if @artist.errors[:name].any? %>">
-    <%= f.label :name %>
+    <%= f.label "Artist Name"%>
         <br />
     <%= f.text_field :name %>
   </div>
