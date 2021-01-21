@@ -4,7 +4,7 @@ class Song < ApplicationRecord
   has_many :playlist_songs
   has_many :playlists, through: :playlist_songs
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :artist, message: 'Song Already Exists for that Artist'}
   validates :artist_name, presence: true
   validates :genre_name, presence: true
 

@@ -39,9 +39,12 @@ class PlaylistsController < ApplicationController
 
     def destroy
         @playlist = Playlist.find(params[:id])
-        @playlist.destroy
-        flash[:notice] = "Song deleted."
-        redirect_to songs_path
+        if @playlist.songs.empty?
+          @playlist.destroy
+        else
+          flash[:notice] = "Please delete all the genre songs in the playlist before deleting the playlist."
+        end
+        redirect_to playlists_path
     end
 
     private

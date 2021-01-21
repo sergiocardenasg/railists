@@ -4,5 +4,4 @@ class Playlist < ApplicationRecord
   has_many :songs, through: :playlist_songs
   has_many :artists, through: :songs
   has_many :genres, through: :songs
-
 end

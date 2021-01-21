@@ -36,16 +36,14 @@ class SongsController < ApplicationController
         render :new
       end
     end
-  
+
     def edit
       @song = Song.find(params[:id])
     end
   
     def update
       @song = Song.find(params[:id])
-  
       @song.update(song_params)
-  
       if @song.save
         redirect_to @song
       else
@@ -56,7 +54,6 @@ class SongsController < ApplicationController
     def destroy
       @song = Song.find(params[:id])
       @song.destroy
-      flash[:notice] = "Song deleted."
       redirect_to songs_path
     end
   

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:show, :index]
   end
   resources :playlists do
+    resources :playlist_songs
     resources :songs
   end
   resources :users do

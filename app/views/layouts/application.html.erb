@@ -21,8 +21,12 @@
           </button> %>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <%if session[:user_id] %>
-          <a class="navbar-brand" href="/users/<%=current_user.id%>"/><%=current_user.username%>'s profile</a>
+          <a class="navbar-brand" href="/users/<%=current_user.id%>"/><%=current_user.username.capitalize%>'s profile</a>
           <%# <a class="navbar-brand" href="/logout"/>Log Out</a> %>
+          <%= link_to 'My Playlists', playlists_path, class:"navbar-brand"%>
+          <%= link_to 'See All Artists', artists_path, class:"navbar-brand"%>
+          <%= link_to 'See All Genres', genres_path, class:"navbar-brand"%>
+          <%= link_to 'See All Songs', songs_path, class:"navbar-brand"%>
           <%= link_to "Log Out", logout_path, class:"navbar-brand"%>
         <%else%>
           <a class="navbar-brand" href="/signup"/>Sign Up</a>

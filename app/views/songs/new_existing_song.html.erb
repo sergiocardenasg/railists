@@ -1,0 +1,24 @@
+<%= form_for @playlist_song, url: "/playlist_songs", method: "post" do |f| %>
+
+    <% if @playlist_song.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@playlist_song.errors.count, "error") %> encountered:
+            </h2>
+
+            <ol>
+            <% @playlist_song.errors.full_messages.each do |message| %>
+                <li><%= playlist_song %></li>
+            <% end %>
+            </ol>
+        </div>
+    <% end %>
+
+    <div class="form-group <%= 'field_with_errors' if @playlist_song.errors[:song_title].any? %>">
+        <%= f.label :song_title %><br>
+        <%= f.collection_select(:song_title, Song.all, :title, :title, prompt: "Please select the song from this dropdown") %>
+    </div>
+
+    <%= f.submit class: "btn btn-primary", value: "Add to the Playlist"%>
+
+<% end %>

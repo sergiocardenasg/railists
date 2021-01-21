@@ -2,6 +2,10 @@ class PlaylistSongsController < ApplicationController
     def index
         @playlist_songs = PlaylistSong.all
     end
+
+    def show
+        @playlist_song = PlaylistSong.find(params[:id])
+    end
     
     def new
         @playlist_song = PlaylistSong.new
@@ -27,6 +31,12 @@ class PlaylistSongsController < ApplicationController
         else
             render :new
         end
+    end
+
+    def destroy
+        @playlist_song = PlaylistSong.find(params[:id])
+        @playlist_song.destroy
+        redirect_to playlist_songs_path
     end
 
     private

@@ -22,14 +22,12 @@ class GenresController < ApplicationController
       end
     
       def edit
-        @genre = genre.find(params[:id])
+        @genre = Genre.find(params[:id])
       end
     
       def update
         @genre = Genre.find(params[:id])
-    
         @genre.update(genre_params)
-    
         if @genre.save
           redirect_to @genre
         else
@@ -39,8 +37,11 @@ class GenresController < ApplicationController
     
       def destroy
         @genre = Genre.find(params[:id])
-        @genre.destroy
-        flash[:notice] = "Genre deleted."
+        if @genre.songs.empty?
+          @genre.destroy
+        else
+          flash[:notice] = "Please delete all the genre songs before deleting genre."
+        end
         redirect_to genres_path
       end
     

@@ -39,8 +39,11 @@ class ArtistsController < ApplicationController
   
     def destroy
       @artist = Artist.find(params[:id])
-      @artist.destroy
-      flash[:notice] = "Artist deleted."
+      if @artist.songs.empty?
+        @artist.destroy
+      else
+        flash[:notice] = "Please delete all the artists songs before deleting artist."
+      end
       redirect_to artists_path
     end
   

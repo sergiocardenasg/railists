@@ -1,4 +1,9 @@
 <h1>Artists</h1>
+<% if flash[:notice] %>
+  <div class="center alert">
+    <p><%= flash[:notice] %></p>
+  </div>
+<% end %>
 <table class="table">
   <thead>
   <tr>
@@ -9,11 +14,15 @@
   <tr>
     <td><strong>Artists</strong></td>
     <td><strong>Number of Songs</strong></td>
+    <td><strong>Edit</strong></td>
+    <td><strong>Delete</strong></td>
   </tr>
   <% @artists.each do |artist| %>
     <tr>
       <td><%= link_to artist.name, artist_path(artist) %></td>
       <td><%= artist.songs.count %></td>
+      <td><%= link_to "Edit artist", edit_artist_path(artist) %></td>
+      <td><%= link_to "Delete artist", artist_path(artist), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
     </tr>
   <% end %>
   </tbody>
