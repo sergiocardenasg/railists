@@ -5,6 +5,9 @@ class SessionsController < ApplicationController
   end
   
   def new
+    if logged_in?
+      redirect_to playlists_path
+    end
   end
   
   def create
