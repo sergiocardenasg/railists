@@ -1,60 +1,71 @@
 class SongsController < ApplicationController
     def index
-      if params[:artist_id]
-        @artist = Artist.find_by(id: params[:artist_id])
-        if @artist.nil?
-          redirect_to artists_path, alert: "Artist not found."
-        else
-          @songs = @artist.songs
-        end
-      else
+      if logged_in?
         @songs = Song.all
+      else
+        redirect_to root_path     
       end
     end
   
     def show
-      if params[:artist_id]
-        @artist = Artist.find_by(id: params[:artist_id])
-        @song = @artist.songs.find_by(id: params[:id])
-        if @song.nil?
-          redirect_to artist_songs_path(@artist), alert: "Song not found."
-        end
-      else
+      if logged_in?
         @song = Song.find(params[:id])
+      else
+        redirect_to root_path     
       end
     end
   
     def new
-      @song = Song.new
+      if logged_in?
+        @song = Song.new
+      else
+        redirect_to root_path     
+      end
     end
   
     def create
-      @song = Song.new(song_params)
-      if @song.save
-        redirect_to song_path(@song)
+      if logged_in?
+        @song = Song.new(song_params)
+        if @song.save
+          redirect_to song_path(@song)
+        else
+          render :new
+        end      
       else
-        render :new
+        redirect_to root_path     
       end
     end
 
     def edit
-      @song = Song.find(params[:id])
+      if logged_in?
+        @song = Song.find(params[:id])
+      else
+        redirect_to root_path     
+      end
     end
   
     def update
-      @song = Song.find(params[:id])
-      @song.update(song_params)
-      if @song.save
-        redirect_to @song
+      if logged_in?
+        @song = Song.find(params[:id])
+        @song.update(song_params)
+        if @song.save
+          redirect_to @song
+        else
+          render :edit
+        end
       else
-        render :edit
+        redirect_to root_path     
       end
     end
   
     def destroy
-      @song = Song.find(params[:id])
-      @song.destroy
-      redirect_to songs_path
+      if logged_in?
+        @song = Song.find(params[:id])
+        @song.destroy
+        redirect_to songs_path
+      else
+        redirect_to root_path     
+      end
     end
   
     private

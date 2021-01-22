@@ -14,7 +14,7 @@ class PlaylistSongsController < ApplicationController
     def create
         @playlist_song = PlaylistSong.new(playlistsong_params)
         if @playlist_song.save
-            redirect_to playlists_path
+            redirect_to playlist_song_path(@playlist_song)
         else
             render :new
         end

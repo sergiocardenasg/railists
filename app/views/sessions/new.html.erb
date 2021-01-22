@@ -1,3 +1,9 @@
+  <% if flash[:message] %>
+    <div class="center alert">
+      <p><%= flash[:message] %></p>
+    </div>
+  <% end %>
+
 <%= form_tag('/signin', method: :post) do %>
 
   <div class="form-group">
