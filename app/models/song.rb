@@ -7,6 +7,8 @@ class Song < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :artist, message: 'Song Already Exists for that Artist'}
   validates :artist_name, presence: true
   validates :genre_name, presence: true
+  scope :ordered_by_title, -> { order(title: :asc) }
+
 
   def artist_name
     self.try(:artist).try(:name)

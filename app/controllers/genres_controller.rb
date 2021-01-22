@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
     def index
       if logged_in?
-        @genres = Genre.all
+        @genres = Genre.ordered_by_name
       else
         redirect_to root_path     
       end

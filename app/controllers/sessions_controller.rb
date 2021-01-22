@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :logged_in?, only: [:new, :create]
+
   def home
   end
   
@@ -30,7 +32,7 @@ class SessionsController < ApplicationController
     else
         render :new
     end
-end
+  end
 
   def destroy
       if current_user

@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
     def index
       if logged_in?
-        @songs = Song.all
+        @songs = Song.ordered_by_title
       else
         redirect_to root_path     
       end

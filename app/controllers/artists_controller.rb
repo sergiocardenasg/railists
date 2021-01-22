@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
     def index
       if logged_in?
-        @artists = Artist.all
+        @artists = Artist.ordered_by_name
       else
         redirect_to root_path     
       end
