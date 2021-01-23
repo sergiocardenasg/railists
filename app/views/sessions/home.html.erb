@@ -1,14 +1,20 @@
 <div>
   <h1 align="center">Welcome to Railists!</h1> <br>
     <div style='width: 400px;margin:auto'>
-    <img  style='width: 400px' src="https://miro.medium.com/max/600/0*7asj1rKS8d2mead_.png">
+      <img  style='width: 400px' src="https://miro.medium.com/max/600/0*7asj1rKS8d2mead_.png">
+    </div>
     <%if session[:user_id] %>
         <br>
         <br>
       <%else%>
       <br>
+      <div style='margin-left:40%'>
         <a href="/signup"><button type="button" class="btn btn-dark btn-lg">Sign Up</button></a>
         <a href="/signin"><button type="button" class="btn btn-dark btn-lg">Sign In</button></a>
+      </div>
+      <br>
+      <div id='git_page_btn'>
+          <button id='white' type="button" style='background-color:#6f42c1' class="btn btn-dark btn-lg"> <%= link_to 'Signing in with GitHub', :github_auth, class:"nav-link"%></button>
+      </div>
     <%end%>
-  </div>
 </div>
