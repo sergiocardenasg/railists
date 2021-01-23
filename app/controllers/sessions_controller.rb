@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
   end
   
   def create
-      #byebug
-      user = User.find_by(:email => params[:email])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      elsif user.blank?
+      @user = User.find_by(:email => params[:email])
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      elsif @user.blank?
         flash[:message] = "Please fill all fields"
+        render :new
       else
         flash[:message] = "Incorrect login info"
         render :new

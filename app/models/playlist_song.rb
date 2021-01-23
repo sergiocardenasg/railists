@@ -2,6 +2,9 @@ class PlaylistSong < ApplicationRecord
   belongs_to :playlist
   belongs_to :song
 
+  validates :song_id, presence: true
+  validates :playlist_id, presence: true
+
   def song_title
     self.try(:song).try(:title)
   end

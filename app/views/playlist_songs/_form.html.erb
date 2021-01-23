@@ -8,7 +8,7 @@
 
             <ol>
             <% @playlist_song.errors.full_messages.each do |message| %>
-                <li><%= playlist_song %></li>
+                <li><%= message %></li>
             <% end %>
             </ol>
         </div>

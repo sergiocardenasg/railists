@@ -1,6 +1,14 @@
 <div>
-  <div style='width: 600px;margin:auto'>
-    <img  style='width: 600px' src="http://www.washingtonpost.com/wp-srv/special/health/why-roller-coasters-make-us-scream/images/rollercoasterBackground.jpg">
+  <h1 align="center">Welcome to Railists!</h1> <br>
+    <div style='width: 400px;margin:auto'>
+    <img  style='width: 400px' src="https://miro.medium.com/max/600/0*7asj1rKS8d2mead_.png">
+    <%if session[:user_id] %>
+        <br>
+        <br>
+      <%else%>
+      <br>
+        <a href="/signup"><button type="button" class="btn btn-dark btn-lg">Sign Up</button></a>
+        <a href="/signin"><button type="button" class="btn btn-dark btn-lg">Sign In</button></a>
+    <%end%>
   </div>
-  <h1 align="center">Welcome to Railists!</h1>
 </div>
