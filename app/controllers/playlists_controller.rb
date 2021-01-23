@@ -1,14 +1,15 @@
 class PlaylistsController < ApplicationController
     def index
         if logged_in?
-            @playlists = Playlist.ordered_by_name
+            @playlists = current_user.playlists.ordered_by_name
         else
             redirect_to root_path     
         end
     end
     
     def show
-        if logged_in?
+        @playlist = Playlist.find(params[:id])
+        if current_user == @playlist.user
             @playlist = Playlist.find(params[:id])
         else
             redirect_to root_path     

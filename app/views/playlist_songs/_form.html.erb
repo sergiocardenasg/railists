@@ -21,7 +21,7 @@
 
     <div class="form-group <%= 'field_with_errors' if @playlist_song.errors[:playlist_name].any? %>">
         <%= f.label :playlist_name %><br>
-        <%= f.collection_select(:playlist_name, Playlist.all, :name, :name, prompt: "Please select the playlist you'd like to add the song to from this dropdown") %>
+        <%= f.collection_select(:playlist_name, current_user.playlists, :name, :name, prompt: "Please select the playlist you'd like to add the song to from this dropdown") %>
     </div>
 
     <%= f.submit class: "btn btn-primary", value: "Add to the Playlist"%>
