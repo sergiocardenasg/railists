@@ -39,7 +39,8 @@ class PlaylistsController < ApplicationController
     end
 
     def edit
-        if logged_in?
+        @playlist = Playlist.find(params[:id])
+        if current_user == @playlist.user
             @playlist = Playlist.find(params[:id])
         else
             redirect_to root_path     

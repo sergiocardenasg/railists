@@ -14,12 +14,14 @@
   <tr>
     <td><strong>Name</strong></td>
     <td><strong>Date Created</strong></td>
+    <td><strong>Edit</strong></td>
     <td><strong>Delete</strong></td>
   </tr>
   <% @playlists.each do |playlist| %>
     <tr>
       <td><%= link_to playlist.name, playlist_path(playlist) %></td>
       <td><%= playlist.created_at.strftime("%D") %></td>
+      <td><%= link_to "Edit playlist", edit_playlist_path(playlist) %></td>
       <td><%= link_to "Delete playlist", playlist_path(playlist), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
     </tr>
   <% end %>

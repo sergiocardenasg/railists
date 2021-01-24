@@ -1,4 +1,9 @@
 <h1>All Songs</h1>
+<% if flash[:notice] %>
+  <div class="center alert">
+    <p><%= flash[:notice] %></p>
+  </div>
+<% end %>
 <table class="table">
   <thead>
   <tr>

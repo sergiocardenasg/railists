@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="form-group <%= 'field_with_errors' if @genre.errors[:name].any? %>">
-    <%= f.label :name %>
+    <%= f.label "Name"%>
         <br />
     <%= f.text_field :name %>
   </div>

@@ -61,7 +61,11 @@ class SongsController < ApplicationController
     def destroy
       if logged_in?
         @song = Song.find(params[:id])
-        @song.destroy
+        if @song.playlists.empty?
+          @song.destroy
+        else
+          flash[:notice] = "Please make sure this song is not present in any playlists before deleting it."
+        end
         redirect_to songs_path
       else
         redirect_to root_path     

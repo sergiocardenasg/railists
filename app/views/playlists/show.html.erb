@@ -12,13 +12,19 @@
     <td><strong>Genre</strong></td>
     <td><strong>Delete</strong></td>
   </tr>
-  <% @playlist.playlist_songs.each do |playlist_song| %>
+  <% if @playlist.songs.empty?%>
     <tr>
-      <td><%= link_to playlist_song.song.title, song_path(playlist_song.song) %></td>
-      <td><%= link_to playlist_song.song.artist.name, artist_path(playlist_song.song.artist) %></td>
-      <td><%= link_to playlist_song.song.genre.name, genre_path(playlist_song.song.genre) %></td>
-      <td><%= link_to "Delete song from playlist", playlist_song_path(playlist_song), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
+          <strong>Your playlist is empty! Add songs using the link below:</strong>
     </tr>
+  <% else %>
+    <% @playlist.playlist_songs.each do |playlist_song| %>
+      <tr>
+        <td><%= link_to playlist_song.song.title, song_path(playlist_song.song) %></td>
+        <td><%= link_to playlist_song.song.artist.name, artist_path(playlist_song.song.artist) %></td>
+        <td><%= link_to playlist_song.song.genre.name, genre_path(playlist_song.song.genre) %></td>
+        <td><%= link_to "Delete song from playlist", playlist_song_path(playlist_song), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
+      </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>
