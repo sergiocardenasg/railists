@@ -22,4 +22,5 @@ class PlaylistSong < ApplicationRecord
     playlist = Playlist.find_or_create_by(name: name)
     self.playlist = playlist
   end
+
 end

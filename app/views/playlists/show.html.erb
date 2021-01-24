@@ -22,7 +22,7 @@
         <td><%= link_to playlist_song.song.title, song_path(playlist_song.song) %></td>
         <td><%= link_to playlist_song.song.artist.name, artist_path(playlist_song.song.artist) %></td>
         <td><%= link_to playlist_song.song.genre.name, genre_path(playlist_song.song.genre) %></td>
-        <td><%= link_to "Delete song from playlist", playlist_song_path(playlist_song), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
+        <td><%= link_to "Delete song from playlist", playlist_path(playlist_song.playlist), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       </tr>
     <% end %>
   <% end %>
